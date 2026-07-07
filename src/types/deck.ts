@@ -1,4 +1,4 @@
-export type ButtonType = 'scene' | 'action' | 'emergency' | 'system';
+export type ButtonType = "scene" | "action" | "mute" | "system" | "emergency";
 
 export interface DeckButtonConfig {
     id: string;
