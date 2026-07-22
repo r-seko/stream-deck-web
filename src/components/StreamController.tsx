@@ -35,7 +35,6 @@ export default function StreamController() {
                     {INITIAL_DECK_DATA.map((button) => {
 
                         if (button.type === "scene") {
-                            const isActive = activeSceneId === button.id;
                             return (
                                 <SceneButton
                                     key={button.id}
