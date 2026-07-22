@@ -3,11 +3,11 @@ import { INITIAL_DECK_DATA } from "../data/deckData";
 import DeckButton from "./DeckButton";
 import SceneContent from "./functions/SceneContent";
 import MuteContent from "./functions/MuteContent";
-import SeContent from "./functions/SeContent";
+import SeButton from "./functions/SeButton";
 import EmergencyContent from "./functions/EmergencyContent";
 import SystemContent from "./functions/SystemContent";
 import type { DeckButtonConfig } from "../types/deck";
-
+import EffectButton from "./functions/EffectButton";
 
 export default function StreamController() {
     const [activeSceneId, setActiveSceneId] = useState<string>("1");
@@ -73,15 +73,26 @@ export default function StreamController() {
                         }
 
                         if (button.type === "action") {
+                            const soundLabels = ["Clap", "Fanfare", "Goon"];
+
+                            if (soundLabels.includes(button.label)) {
+                                return (
+                                    <SeButton
+                                        key={button.id}
+                                        label={button.label}
+                                        icon={button.icon}
+                                        colorClass={button.colorClass}
+                                    />
+                                );
+                            }
+
                             return (
-                                <DeckButton
+                                <EffectButton
                                     key={button.id}
-                                    onClick={() => handleButtonClick(button)}
-                                    isActive={false}
-                                    className={button.colorClass}
-                                >
-                                    <SeContent label={button.label} icon={button.icon} />
-                                </DeckButton>
+                                    label={button.label}
+                                    icon={button.icon}
+                                    colorClass={button.colorClass}
+                                />
                             );
                         }
 
