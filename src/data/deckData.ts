@@ -1,21 +1,38 @@
 import type { DeckButtonConfig } from "../types/deck";
 
-export const INITIAL_DECK_DATA: DeckButtonConfig[] = [
-    { id: "1", label: "Intro", icon: "🎬", type: "scene", colorClass: "bg-blue-600 border-blue-400" },
-    { id: "2", label: "Main", icon: "💬", type: "scene", colorClass: "bg-blue-600 border-blue-400" },
-    { id: "3", label: "Game", icon: "🎮", type: "scene", colorClass: "bg-blue-600 border-blue-400" },
-    { id: "4", label: "Outro", icon: "👋", type: "scene", colorClass: "bg-blue-600 border-blue-400" },
-    { id: "5", label: "CLEAR", icon: "🚨", type: "emergency", colorClass: "bg-red-600 border-red-400" },
+export const INITIAL_DECK_DATA: Record<number, DeckButtonConfig[]> = {
+    1: [
+        { id: "1", type: "scene", label: "Intro", icon: "🎬", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "2", type: "scene", label: "Main", icon: "🎮", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "3", type: "scene", label: "Chat", icon: "💬", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "4", type: "scene", label: "Collab", icon: "👥", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "5", type: "scene", label: "Outro", icon: "👋", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
 
-    { id: "6", label: "Welcome", icon: "✨", type: "action", colorClass: "bg-purple-600 border-purple-400" },
-    { id: "7", label: "Sub", icon: "🔔", type: "action", colorClass: "bg-purple-600 border-purple-400" },
-    { id: "8", label: "Focus", icon: "⚡", type: "action", colorClass: "bg-purple-600 border-purple-400" },
-    { id: "9", label: "BGM Mute", icon: "🔇", type: "mute", colorClass: "bg-amber-600 border-amber-400" },
-    { id: "10", label: "MIC Mute", icon: "🎙️", type: "mute", colorClass: "bg-amber-600 border-amber-400" },
+        { id: "6", type: "action", label: "Welcome", icon: "✨", colorClass: "bg-purple-900/60 border-purple-700 hover:bg-purple-800 text-white" },
+        { id: "7", type: "action", label: "Sub", icon: "🔔", colorClass: "bg-purple-900/60 border-purple-700 hover:bg-purple-800 text-white" },
+        { id: "8", type: "action", label: "Focus", icon: "🎯", colorClass: "bg-purple-900/60 border-purple-700 hover:bg-purple-800 text-white" },
+        { id: "9", type: "mute", label: "Mute BGM", icon: "🎵", colorClass: "bg-amber-600 border-amber-400 text-white" },
+        { id: "10", type: "mute", label: "Mute Mic", icon: "🎙️", colorClass: "bg-amber-600 border-amber-400 text-white" },
 
-    { id: "11", label: "Clap", icon: "👏", type: "action", colorClass: "bg-emerald-600 border-emerald-400" },
-    { id: "12", label: "Fanfare", icon: "🎉", type: "action", colorClass: "bg-emerald-600 border-emerald-400" },
-    { id: "13", label: "Goon", icon: "💥", type: "action", colorClass: "bg-emerald-600 border-emerald-400" },
-    { id: "14", label: "Prev", icon: "◀", type: "system", colorClass: "bg-zinc-700 border-zinc-500" },
-    { id: "15", label: "Next", icon: "▶", type: "system", colorClass: "bg-zinc-700 border-zinc-500" }
-];
+        { id: "11", type: "action", label: "Clap", icon: "👏", colorClass: "bg-emerald-900/60 border-emerald-700 hover:bg-emerald-800 text-white" },
+        { id: "12", type: "action", label: "Fanfare", icon: "🎉", colorClass: "bg-emerald-900/60 border-emerald-700 hover:bg-emerald-800 text-white" },
+        { id: "13", type: "action", label: "Goon", icon: "💥", colorClass: "bg-emerald-900/60 border-emerald-700 hover:bg-emerald-800 text-white" },
+        { id: "14", type: "emergency", label: "SOS", icon: "🚨", colorClass: "bg-red-900 border-red-700 hover:bg-red-800 text-white" },
+        { id: "15", type: "system", label: "Settings", icon: "⚙️", colorClass: "bg-zinc-700 border-zinc-600 hover:bg-zinc-600 text-white" },
+    ],
+    2: [
+        { id: "2-1", type: "scene", label: "Away", icon: "☕", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "2", type: "scene", label: "Main", icon: "🎮", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" }, // 1ページ目と同一IDで連動
+        { id: "2-2", type: "system", label: "Discord", icon: "🎧", colorClass: "bg-indigo-900 border-indigo-700 hover:bg-indigo-800 text-white" },
+        { id: "2-3", type: "system", label: "OBS Rec", icon: "🔴", colorClass: "bg-zinc-800 border-zinc-700 hover:bg-zinc-700 text-white" },
+        { id: "2-4", type: "system", label: "Browser", icon: "🌐", colorClass: "bg-zinc-700 border-zinc-600 hover:bg-zinc-600 text-white" },
+
+        ...Array.from({ length: 10 }, (_, i) => ({
+            id: `blank-${i}`,
+            type: "system" as const,
+            label: "",
+            icon: "",
+            colorClass: "bg-zinc-900/20 border-zinc-800/40 opacity-20 pointer-events-none text-white"
+        }))
+    ]
+};
